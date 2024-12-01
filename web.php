@@ -1,10 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HalamanController;
 
-Route::get('/', function () {
-    return 'Halo, Selamat Datang di Laravel Nurul!';
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
-
-Route::get('/halo', [HalamanController::class, 'SelamatDatang']);
